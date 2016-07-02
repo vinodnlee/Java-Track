@@ -1,0 +1,135 @@
+Methods of Class Objec Method
+
+equals (Object obj)		->		Decides whether two objects are meaningfully equivalent.
+void finalize()			->		Called by garbage collector when the garbage collector sees that the object cannot be referenced.
+int hashCode()			->		Returns a hashcode int value for an object, so that the object can be used in Collection classes that use hashing, 										including Hashtable, HashMap, and HashSet.
+final void notify() 	->		Wakes up a thread that is waiting for this object’s lock.
+final void notifyAll() 	-> 		Wakes up all threads that are waiting for this object’s lock.
+final void wait()	 	-> 		Causes the current thread to wait until another thread calls notify() or notifyAll() on this object.
+String toString() 		-> 		Returns a “text representation” of the object.
+
+
+
+What’s the difference between equals() and ==?
+
+Now that we’ve gone over the “==” operator, let’s discuss the equals() method and how that compares to the “==” operator. The equals method is defined in the Object class, from which every class is either a direct or indirect descendant. By default, the equals() method actually behaves the same as the “==” operator – meaning it checks to see if both objects reference the same place in memory. 
+The == (double equals) returns true, if the variable reference points to the same object in memory. This is called “shallow comparison”.
+The equals() method calls the user implemented equals() method, which compares the object attribute values. The equals() method provides “deep comparison” by checking if two objects are logically equal as opposed to the shallow comparison provided by the operator ==.
+If equals() method does not exist in a user supplied class then the inherited Object class's equals() method will be called which evaluates if the references point to the same object in memory. In this case, the object.equals() works just like the "==" operator.
+
+
+Highlights of the equals() contract:
+❑ Reflexive: x.equals(x) is true.
+❑ Symmetric: If x.equals(y) is true, then y.equals(x) must be true.
+❑ Transitive: If x.equals(y) is true, and y.equals(z) is true, then z.equals(x) is true.
+❑ Consistent: Multiple calls to x.equals(y) will return the same result.
+❑ Null: If x is not null, then x.equals(null) is false.
+
+Highlights of the hashCode() contract:
+❑ Consistent: multiple calls to x.hashCode() return the same integer.
+
+transient variables aren't appropriate for equals() and hashCode().
+
+
+■ Collection (capital C), which is actually the java.util.Collection interface from which Set, List, and Queue extend. (That's right, extend, not imple- ment. There are no direct implementations of Collection.)
+■ Collections (capital C and ends with s) is the java.util.Collections class that holds a pile of static utility methods for use with collections.
+
+
+
+Lists of things (classes that implement List). Unique things (classes that implement Set).
+■ Lists
+■ Sets
+■ Maps
+■ Queues Things arranged by the order in which they are to be processed.
+
+sub-flavors within those four flavors of collections:
+Sorted
+Unsorted
+Ordered
+Unordered
+
+LIST-A List cares about the index -it is an ordered collection  but not sorted
+ArrayList
+Vector -Vector methods are syn- chronized for thread safety.
+LinkedList the elements are doubly-linked to one another. This linkage gives you new methods. for adding and removing from the beginning or end, which makes it an easy choice for implementing a stack or queue.
+ LinkedList may iterate more slowly than an ArrayList, but it's a good choice when you need fast insertion and deletion.
+
+Set cares about uniquenes,it doesn't allow duplicates.
+HashSet A HashSet is an unsorted, unordered Set
+LinkedHashSet A LinkedHashSet is an ordered version of HashSet that maintains a doubly-linked List across all elements.
+
+========================================================================================================================
+Reference SCJP
+
+Java Array:
+
+Declaring an array
+	double[] myList = new double[10];
+
+Java Collections:
+	collections can hold Objects but not primitives.
+	Architecture of collections -> Set ,List ,Queue ,Map
+
+	List -> methods Like add remove size isEmpty contains
+	ArrayList,
+	Code :Implement ArrayList using Array
+	Linked List,
+	Code: Implement single and doubly linked List.
+	Vector
+	Difference between ArrayList,Linked List and Vector
+	Difference between Array and  Array List.
+========================================================================================================================
+
+Set ->uniquness and no duplicates
+	HashSet
+	Linked HashSet
+	TreeSet understand Red black tree used for TreeSet
+	//Not Important
+	Wat is Red Black tree 				->	https://www.youtube.com/watch?v=m9tse9Gr2pE
+	insert a new node in red black tree ->  https://www.youtube.com/watch?v=g9SaX0yeneU
+
+Difference between HashSet,TreeSet,LinkedHashSet -> http://javaconceptoftheday.com/hashset-vs-linkedhashset-vs-treeset-in-java/
+
+	Map
+	HashMap
+	Implement Hash Map 
+	Hashtable 
+	LinkedHashMap -> Maintain insertion order
+	TreeMap -> Sorted Map uses comparable and comparator interface.
+
+
+Queue
+
+	Priority Queue -> Priority in and Priority out
+
+Sorting Collections
+	the one-arg sort() method, you'll see that the sort() method takes a List argument, and that the objects in the List must implement an interface called Comparable. It turns out that String implements Comparable, and that's why we were able to sort a list of Strings using the Collections.sort() method
+
+The Comparable Interface
+
+	compareTo() method returns an int with the following characteristics:
+
+	negative If thisObject < anotherObject 
+	zero If thisObject == anotherObject 
+	positive If thisObject > anotherObject
+
+	class DVDInfo implements Comparable<DVDInfo> {
+	    String title;
+	    String genre;
+	    String leadActor;
+
+	    public int compareTo(DVDInfo d) {
+	      return title.compareTo(d.getTitle());
+	}
+Sorting with Comparator
+Compare method custom order sorting.
+
+
+
+
+
+
+
+
+
+
