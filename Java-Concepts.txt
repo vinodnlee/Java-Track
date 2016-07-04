@@ -124,6 +124,18 @@ The Comparable Interface
 Sorting with Comparator
 Compare method custom order sorting.
 
+========================================================================================================================
+volatile keyword in java example
+
+Volatile --> Guarantees visibility and NOT atomicity
+Synchronization (Locking) --> Guarantees visibility and atomicity (if done properly)
+	http://tutorials.jenkov.com/java-concurrency/volatile.html
+	https://www.youtube.com/watch?v=7BShcgKkVAU
+========================================================================================================================
+Transient keyword in java example
+
+
+
 
 
 

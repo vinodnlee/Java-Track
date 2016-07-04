@@ -1,0 +1,148 @@
+Building Your First React App
+
+	import React from 'react';
+	class Hello extends React.Component { 
+		render() {
+				return (<h1>Hello World</h1>) 
+				}
+	}
+
+	var Hello = React.createClass({
+		render : function(){
+			return (<h1>Hello World</h1>);
+		}
+	});
+	React.render(<Hello />, document.getElementById('root'));
+	->	the minimum number of changes that must be made in order to make the virtual DOM tree and the actual DOM tree 		identical is called reconciliation	
+=====================================================================================================================
+Dynamic Values
+In JSX, values written between curly braces ({}) are evaluated as a JavaScript expression and rendered in the markup.
+
+import React, { Component } from 'react';
+class Hello extends Component { 
+	render() {
+		var place = "World"; 
+		return (<h1>Hello {place}</h1> );
+	} 
+}
+=====================================================================================================================
+Composing Components
+Props
+	->	components reusable and composable is the ability to configure them, and React provides properties (or props, in 	 short) for doing so
+	->  Props are the mechanism used in React for passing data from parent to child components.
+	->	They can’t be changed from inside the child component; props are passed and “owned” by the parent.
+	-> 	Besides using named props, it’s also possible to reference the content between the opening and closing
+		tags using props.children.
+	-> 	Props are received by the component and are immutable
+
+	<ListItem quantity="1">Bread</ListItem>
+	<li>
+		{this.props.quantity}× {this.props.children}
+	</li>
+States
+
+	->	Add behavior and interactions, a component needs to have mutable data to represent its state.
+	->	React’s components can have mutable data inside this.state.
+	->	this.state is private to the component and can be changed by calling this.setState({}).
+	->	when the state is updated, the component triggers the reactive rendering, and the component itself and its 			children will be re-rendered
+=====================================================================================================================
+Functions
+	->	To explicitly bind the function to context use .bind(this).
+Single Root Node
+	->	React components can only render a single root node.a return statement can only return a single value.
+Use Ternary Expressions
+	->	<div className={condition ? "salutation" : ""}>
+=====================================================================================================================
+
+Keys
+	->	Keys are unique identifiers that allow for fast lookups between trees for finding insertions, deletions, 			substitutions, and moves. Every time you create components in a loop, it’s a good idea to provide a key for each 	 child in order to help the React Library match and avoid performance bottlenecks
+=====================================================================================================================
+
+Prop Validation
+	->	propTypes are defined as a class constructor property.
+	Greeter.propTypes = {
+  		salutation: PropTypes.string.isRequired
+	}
+Default Prop Values
+	Greeter.defaultProps = {
+  		salutation: "Hello World"
+	}
+
+Validator Types
+	PropTypes.array
+	PropTypes.bool
+	PropTypes.func
+	PropTypes.number
+	PropTypes.object
+	PropTypes.string
+Custom PropType Validators
+Validators are basically just functions that receive a list of properties, the name of the property to check, and the name of the component.but there may still be some scenarios where one might need a more specific validator.
+=====================================================================================================================
+
+• Props are a component’s configuration. They are received from above and immutable as far as the component receiving them is concerned.
+• State starts with a default value defined in the component’s constructor and then suffers from mutations in time (mostly generated from user events). A component manages its own state internally, and every time the state changes, the component is rendered again.
+
+Which Components Should Be Stateful?
+
+	• Identify every component that renders something based on that state.
+	• Find a common owner component (a single component above all the components
+	  that need the state in the hierarchy).
+	• Either the common owner or another component higher up in the hierarchy should own the state.
+	• If you can’t find a component where it makes sense to own the state, create a new component simply to hold the    state and add it somewhere in the hierarchy above the common owner component.
+=====================================================================================================================	
+Data Flow and Component Communication
+
+-> data flows down in the hierarchy of components.
+
+=====================================================================================================================
+Component Lifecycle
+
+
+Mounting Phase
+
+Class constructor ---> ComponentWillMount ---> render --->ComponentDidMount
+
+ComponentWillMount -> Invoked once ,before initial rendering occurs ,It is important to note that set the state in this phase wil not rerender the component.
+ComponentDidMount  -> Acces to DOM.
+
+Unmounting Phase
+
+ComponentWillUnmount ---> Invoked before component is unmounted in the DOM.Used to remove any event listeners.
+
+Props Changes
+
+ComponentWillReceiveProps --->ShouldComponentUpdate ---> ComponentWillUpdate ---> render ---> ComponentDidUpdate
+
+State Changes
+
+ShouldComponentUpdate ---> ComponentWillUpdate ---> render ---> ComponentDidUpdate
+
+
+Immutability in Plain JavaScript -> More learning
+=====================================================================================================================
+Routing
+
+React Router provides three components to get started:
+• Router and Route: Used to declaratively map routes to your application’s screen hierarchy.
+• Link: Used to create a fully accessible anchor tag with the proper href. Of course this isn’t the only way to navigate the project, but usually it’s the main form the end user will interact with.
+=====================================================================================================================
+Architecting React Applications with Flux
+
+
+Flux is an architectural guideline for building web applications.
+The main point of Flux is to allow an uni-directional data flow in your application.
+basically three pieces: actions, stores, and a dispatcher. 
+
+
+Stores hold all the application state (including data and even UI state) and dispatch events when the state has changed. Views (React components) subscribe to the stores that contain the data they needs and when the data changes, re-render themselves, 
+important characteristic of stores is that they are closed black boxes; they expose public getters to access data, but nobody can insert, update, or change their data in any way,
+
+Actions are loosely defined as “things that happen in your app.” They are created by almost any part of the application, 
+Actions causes stores to update their state.
+action contains a type (its unique name) and an option payload. When dispatched, actions reach the stores, and that’s how a store knows it needs to update its own data.
+
+Dispatcher
+
+Dispatcher is responsible for coordinating the relaying of the actions to the stores and ensuring that the
+stores’ action handlers are executed in the correct order.
+
