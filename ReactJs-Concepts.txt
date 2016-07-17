@@ -146,3 +146,23 @@ Dispatcher
 Dispatcher is responsible for coordinating the relaying of the actions to the stores and ensuring that the
 stores’ action handlers are executed in the correct order.
 
+Webpack
+https://www.youtube.com/watch?annotation_id=annotation_4139363737&feature=iv&src_vid=MhkGQAoc7bc&v=9kJVYpOqcVU
+
+
+https://www.youtube.com/watch?v=TaWKUpahFZM
+https://www.youtube.com/watch?v=MzVFrIAwwS8
+https://www.youtube.com/watch?v=DfRibIkjhew
+https://www.youtube.com/watch?v=RKqRj3VgR_c
+
+
+```
+Pro React JS
+
+1.Besides using named props, it’s also possible to reference the content between the opening and closingtags using props.children
+
+import React, { Component } from 'react';// Parent Componentclass GroceryList extends Component {render() { return (<ul><ListItem quantity="1">Bread</ListItem> <ListItem quantity="6">Eggs</ListItem> <ListItem quantity="2">Milk</ListItem>
+</ul> );} }// Child Componentclass ListItem extends Component {render() { return (<li>{this.props.quantity}× {this.props.children}</li> );} 
+}React.render(<GroceryList />, document.getElementById('root'));
+
+

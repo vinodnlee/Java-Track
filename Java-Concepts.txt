@@ -134,6 +134,22 @@ Synchronization (Locking) --> Guarantees visibility and atomicity (if done prope
 ========================================================================================================================
 Transient keyword in java example
 
+========================================================================================================================
+ConcurrentHashMap 
+	-> initialCapcitiy,loadfactor and Concurrency level 
+
+Difference between HashMap Hashtable and ConcurrentHashMap
+
+https://www.youtube.com/watch?v=aAvnT3L6Mlo&list=PLd3UqWTnYXOlrFicu7spv8Z772MgGbXfQ
+========================================================================================================================
+LRU Algorithm | Least Recently Used Page Replacement Algorithm
+https://www.youtube.com/watch?v=CMsn2-diunc
+========================================================================================================================
+
+========================================================================================================================
+
+========================================================================================================================
+
 
 
 
